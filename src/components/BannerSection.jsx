@@ -1,7 +1,20 @@
 import React from "react";
 import { YOUTUBE_VIDEO_ID } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../utils/firebase";
 
-const BannerSection = () => {
+const BannerSection = ( { openModal }) => {
+
+  const navigate = useNavigate();
+
+  const handleStartTraining = () => {
+    if (auth.currentUser) {
+      navigate("/dashboard");
+    } else {
+      openModal();   // 🔥 Open same modal
+    }
+  };
+
   return (
     <section className="relative w-full h-screen overflow-hidden">
 
@@ -34,7 +47,7 @@ const BannerSection = () => {
           Train harder. Eat smarter. Achieve your fitness goals with expert guidance.
         </p>
 
-        <button className="px-6 py-3 bg-red-500 rounded-lg text-sm sm:text-base font-semibold hover:bg-red-600 transition">
+        <button onClick={handleStartTraining} className="px-6 py-3 bg-red-500 rounded-lg text-sm sm:text-base font-semibold hover:bg-red-600 transition">
           Start Training
         </button>
 

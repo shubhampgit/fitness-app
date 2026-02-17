@@ -4,11 +4,11 @@ import BannerSection from "./BannerSection";
 import ServicesSection from "./ServicesSection";
 import Footer from "./Footer";
 
-const Home = () => {
+const Home = ({ openModal }) => {
   return (
     <>
-      <Header />
-      <BannerSection />
+      <Header openModal={openModal} />
+      <BannerSection openModal={openModal} />
       <ServicesSection />
       <Footer />
     </>

@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import AuthModal from "./AuthModal";
+import { AuthContext } from "../context/AuthContext";
 
-const Header = () => {
-  const [user, setUser] = useState(null);
+const Header = ({ openModal }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   const navigate = useNavigate();
-
-  // Detect login state
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -31,7 +25,7 @@ const Header = () => {
     if (user) {
       setIsDropdownOpen(!isDropdownOpen);
     } else {
-      setIsModalOpen(true);
+      openModal();
     }
   };
 
@@ -49,10 +43,18 @@ const Header = () => {
 
           {/* Profile Icon */}
           <div className="relative">
-            <FaUserCircle
-              className="text-white text-3xl cursor-pointer hover:text-red-500 transition"
-              onClick={handleProfileClick}
-            />
+            <div
+                className="flex items-center gap-2 cursor-pointer"
+                onClick={handleProfileClick}
+            >
+                <FaUserCircle className="text-white text-3xl hover:text-red-500 transition" />
+
+                {user && (
+                <span className="text-white text-sm sm:text-base hidden sm:block">
+                    {user?.name || "User"}
+                </span>
+                )}
+            </div>
 
             {/* Dropdown only if logged in */}
             {user && isDropdownOpen && (

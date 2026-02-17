@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { YOUTUBE_VIDEO_ID } from "../utils/constants";
+import { AuthContext } from "../context/AuthContext";
 
 const Dashboard = () => {
+
+  const { user } = useContext(AuthContext);
+
   return (
     <>
       <Header />
@@ -26,8 +30,8 @@ const Dashboard = () => {
         {/* Dashboard Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 text-white">
 
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6">
-            Hi, Welcome to Fitness Pro 💪
+          <h2 className="text-3xl sm:text-4xl md:text-6xl max-w-xl font-extrabold mb-6">
+            Hi, {user?.name || "User"} Welcome to Fitness Pro 💪
           </h2>
 
           <p className="text-sm sm:text-base md:text-xl max-w-xl mb-8 text-gray-200">
