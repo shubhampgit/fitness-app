@@ -3,17 +3,17 @@ import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-300 pt-16 pb-8 px-6">
+    <footer className="bg-white dark:bg-black text-gray-300 pt-16 pb-8 px-6">
       
       <div className="max-w-6xl mx-auto text-center">
 
         {/* App Name */}
-        <h3 className="text-3xl font-bold text-white mb-4">
+        <h3 className="text-3xl font-bold text-black dark:text-white mb-4">
           FITNESS PRO
         </h3>
 
         {/* Description */}
-        <p className="text-gray-400 max-w-2xl mx-auto mb-8 text-sm md:text-base">
+        <p className="text-black dark:text-gray-400 max-w-2xl mx-auto mb-8 text-sm md:text-base">
           Empowering you to train harder, eat smarter, and live stronger.
           Join us on your journey toward a healthier lifestyle and sustainable fitness success.
         </p>

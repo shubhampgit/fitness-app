@@ -12,16 +12,18 @@ const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          <Route 
-            path="/" 
-            element={<Home openModal={() => setIsModalOpen(true)} />} 
-          />
-          <Route 
-            path="/dashboard" 
-            element={<Dashboard />} 
-          />
-        </Routes>
+        <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
+          <Routes>
+            <Route 
+              path="/" 
+              element={<Home openModal={() => setIsModalOpen(true)} />} 
+            />
+            <Route 
+              path="/dashboard" 
+              element={<Dashboard />} 
+            />
+          </Routes>
+        </div>
 
         {/* Global Auth Modal */}
         <AuthModal

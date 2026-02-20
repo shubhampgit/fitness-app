@@ -12,7 +12,7 @@ const Dashboard = () => {
     <>
       <Header />
 
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden bg-white dark:bg-gray-900 transition-colors duration-300">
 
         {/* Background Video */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -24,7 +24,7 @@ const Dashboard = () => {
             allow="autoplay; fullscreen"
             allowFullScreen
           />
-          <div className="absolute inset-0 bg-black/75"></div>
+          <div className="absolute inset-0 bg-black/70 dark:bg-black/80"></div>
         </div>
 
         {/* Dashboard Content */}
