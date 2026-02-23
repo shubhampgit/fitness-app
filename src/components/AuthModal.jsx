@@ -2,9 +2,11 @@ import React from "react";
 import { auth } from "../utils/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const AuthModal = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   if (!isOpen) return null;
 
@@ -42,7 +44,7 @@ const AuthModal = ({ isOpen, onClose }) => {
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold">Fitness Pro</h2>
           <p className="text-gray-400 text-sm mt-2">
-            Sign in to continue your fitness journey
+            {t("signInText")}
           </p>
         </div>
 
@@ -51,11 +53,11 @@ const AuthModal = ({ isOpen, onClose }) => {
           onClick={handleGoogleLogin}
           className="w-full bg-white text-black py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
         >
-          Sign in with Google
+          {t("signInGoogle")}
         </button>
 
         <p className="text-xs text-gray-500 text-center mt-6">
-          By continuing you agree to our Terms & Privacy Policy.
+          {t("termsText")}
         </p>
       </div>
     </div>

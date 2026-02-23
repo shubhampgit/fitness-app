@@ -1,7 +1,9 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bg-white dark:bg-black text-gray-300 pt-16 pb-8 px-6">
       
@@ -9,13 +11,12 @@ const Footer = () => {
 
         {/* App Name */}
         <h3 className="text-3xl font-bold text-black dark:text-white mb-4">
-          FITNESS PRO
+          {t("appName")}
         </h3>
 
         {/* Description */}
         <p className="text-black dark:text-gray-400 max-w-2xl mx-auto mb-8 text-sm md:text-base">
-          Empowering you to train harder, eat smarter, and live stronger.
-          Join us on your journey toward a healthier lifestyle and sustainable fitness success.
+         {t("footerText")}
         </p>
 
         {/* Social Icons */}
@@ -35,8 +36,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Fitness Pro. All rights reserved. 
-        Built to inspire strength, discipline, and healthy living.
+        © {new Date().getFullYear()} {t("copyrightText")}
       </div>
 
     </footer>

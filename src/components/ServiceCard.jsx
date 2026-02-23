@@ -1,34 +1,36 @@
 import React from "react";
 import { FaDumbbell, FaRunning, FaAppleAlt, FaUserNurse } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const services = [
   {
     icon: <FaDumbbell className="text-red-500 text-5xl mx-auto mb-6" />,
-    title: "Strength Training",
-    description:
-      "Build muscle mass, improve endurance, and increase overall body strength with structured gym workouts.",
+    titleKey: "strengthTraining",
+    descKey:
+      "strengthTrainingDesc",
   },
   {
     icon: <FaRunning className="text-blue-500 text-5xl mx-auto mb-6" />,
-    title: "Cardio Programs",
-    description:
-      "Enhance heart health, burn calories, and boost stamina through personalized cardio routines.",
+    titleKey: "cardioPrograms",
+    descKey:
+      "cardioProgramsDesc",
   },
   {
     icon: <FaAppleAlt className="text-green-500 text-5xl mx-auto mb-6" />,
-    title: "Diet Planning",
-    description:
-      "Customized meal plans designed to complement your workouts and maximize performance and recovery.",
+    titleKey: "dietPlanning",
+    descKey:
+      "dietPlanningDesc",
   },
   {
     icon: <FaUserNurse className="text-purple-500 text-5xl mx-auto mb-6" />,
-    title: "Personal Coaching",
-    description:
-      "One-on-one expert guidance to ensure proper form, motivation, and consistent progress.",
+    titleKey: "personalCoaching",
+    descKey:
+      "personalCoachingDesc",
   },
 ];
 
 const ServicesSection = () => {
+  const { t } = useTranslation();
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
       {services.map((service, index) => (
@@ -38,10 +40,10 @@ const ServicesSection = () => {
         >
           {service.icon}
           <h3 className="text-xl font-semibold mb-3 dark:text-white">
-            {service.title}
+            {t(service.titleKey)}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
-            {service.description}
+            {t(service.descKey)}
           </p>
         </div>
       ))}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { FaUserCircle, FaSun, FaMoon } from "react-icons/fa";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import AuthModal from "./AuthModal";
 import { AuthContext } from "../context/AuthContext";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const Header = ({ openModal }) => {
+  const { t, i18n } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { darkMode, toggleTheme } = useContext(ThemeContext);
@@ -33,17 +35,34 @@ const Header = ({ openModal }) => {
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-40 bg-white/60 dark:bg-black/60 backdrop-blur-md">
-        <div className="flex justify-between items-center px-4 py-3">
+        <div className="flex justify-between items-center px-12 py-3">
 
           <h1
             className="text-black dark:text-white text-lg sm:text-xl font-bold cursor-pointer"
             onClick={() => navigate("/")}
           >
-            FITNESS PRO
+            {t("appName")}
           </h1>
           {/* Right Side Icons */}
         <div className="flex items-center gap-4 sm:gap-6">
+          <select
+            value={i18n.language}
+            onChange={(e) => {
+              const lang = e.target.value;
+              i18n.changeLanguage(lang);
+              localStorage.setItem("lang", lang);
 
+              // RTL support
+              document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+            }}
+            className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded px-2 py-1"
+          >
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="mr">मराठी</option>
+            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
+          </select>
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
@@ -65,7 +84,7 @@ const Header = ({ openModal }) => {
             {/* Username (Desktop only) */}
             {user && (
               <span className="hidden sm:inline-block ml-2 text-white text-sm">
-                {user.name}
+                {t("greeting", { name: user.name })}
               </span>
             )}
 
@@ -75,7 +94,7 @@ const Header = ({ openModal }) => {
                 <button onClick={handleLogout}
                   className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  Sign Out
+                  {t("signOutButton")}
                 </button>
               </div>
             )}

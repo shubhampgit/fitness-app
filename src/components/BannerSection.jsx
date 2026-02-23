@@ -2,10 +2,13 @@ import React from "react";
 import { YOUTUBE_VIDEO_ID } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
+import { useTranslation } from "react-i18next";
 
 const BannerSection = ( { openModal }) => {
 
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleStartTraining = () => {
     if (auth.currentUser) {
@@ -44,10 +47,10 @@ const BannerSection = ( { openModal }) => {
       <div className="relative z-10 flex items-center justify-center h-full text-center text-white px-4">
         <div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Train Hard. Eat Clean. Live Strong.
+            {t("welcome")}
           </h1>
           <button onClick={handleStartTraining} className="bg-red-500 px-6 py-3 rounded-lg hover:bg-red-600 transition">
-            Start Training
+            {t("startTraining")}
           </button>
         </div>
       </div>

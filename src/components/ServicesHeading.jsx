@@ -1,14 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ServicesHeading = () => {
+  const { t } = useTranslation();
     return (
         <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-200 mb-4">
-          Our Services
+          {t("serviceHeading")}
         </h2>
         <p className="text-gray-600 dark:text-gray-100 max-w-2xl mx-auto">
-          We provide complete fitness and nutrition solutions to help you 
-          achieve your health goals efficiently and sustainably.
+          {t("serviceText")}
         </p>
       </div>
     );
