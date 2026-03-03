@@ -1,19 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { YOUTUBE_VIDEO_ID } from "../utils/constants";
-import { AuthContext } from "../context/AuthContext";
-import { useTranslation } from "react-i18next";
+import HeroDashboard from "./HeroDashboard";
+import SubscriptionPlans from "./SubscriptionPlans";
 
 const Dashboard = () => {
-
-  const { user } = useContext(AuthContext);
-  const { t } = useTranslation();
-
   return (
     <>
       <Header />
-      <h1 className="p-20">{t("greeting", { name: user?.name || "Guest" })}</h1>
+      <HeroDashboard />
+      <SubscriptionPlans />
       <Footer />
     </>
   );

@@ -16,7 +16,7 @@ const AuthModal = ({ isOpen, onClose }) => {
       await signInWithPopup(auth, provider);
 
       onClose();
-      navigate("/dashboard"); // ✅ redirect after login
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
     }
