@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const SubscriptionPlans = () => {
-    const [plans, setPlans] = useState([]);
+  const [plans, setPlans] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPlans = async () => {
-      const querySnapshot = await getDocs(
-        collection(db, "subscription_plans")
-      );
+      const querySnapshot = await getDocs(collection(db, "subscription_plans"));
 
       const plansData = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
-    // SORT BY duration_months ASCENDING
+      // SORT BY duration_months ASCENDING
       const sortedPlans = plansData.sort(
-        (a, b) => a.duration_months - b.duration_months
+        (a, b) => a.duration_months - b.duration_months,
       );
 
       setPlans(sortedPlans);
@@ -72,16 +73,17 @@ const SubscriptionPlans = () => {
               {/* Features */}
               <ul className="space-y-3 text-gray-400 text-sm mb-8">
                 {plan.features.map((f, i) => (
-                    <li key={i}>
-                        <span className="text-green-400">✔</span>
-                        {f}
-                    </li>
+                  <li key={i}>
+                    <span className="text-green-400">✔</span>
+                    {f}
+                  </li>
                 ))}
               </ul>
             </div>
 
             {/* CTA Button */}
             <button
+              onClick={() => navigate(`/plan/${plan.id}`)}
               className={`w-full py-3 rounded-xl font-semibold transition ${
                 plan.is_popular
                   ? "bg-green-500 hover:bg-green-600 text-black"

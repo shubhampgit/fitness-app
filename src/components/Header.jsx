@@ -8,7 +8,7 @@ import { AuthContext } from "../context/AuthContext";
 import { ThemeContext } from "../context/ThemeContext";
 import { useTranslation } from "react-i18next";
 
-const Header = ({ openModal }) => {
+const Header = () => {
   const { t, i18n } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -28,7 +28,7 @@ const Header = ({ openModal }) => {
     if (user) {
       setIsDropdownOpen(!isDropdownOpen);
     } else {
-      openModal();
+      setIsModalOpen(true);
     }
   };
 

@@ -4,32 +4,38 @@ import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import AuthModal from "./components/AuthModal";
 import AuthProvider from "./context/AuthContext";
+import PlanDetails from "./pages/PlanDetails";
+import Layout from "./layout/Layout";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import DummyPayment from "./pages/DummyPayment";
 
 const App = () => {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <AuthProvider>
       <BrowserRouter>
         <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300">
-          <Routes>
-            <Route 
-              path="/" 
-              element={<Home openModal={() => setIsModalOpen(true)} />} 
-            />
-            <Route 
-              path="/dashboard" 
-              element={<Dashboard />} 
-            />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route
+                path="/"
+                element={<Home openModal={() => setIsModalOpen(true)} />}
+              />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/plan/:id" element={<PlanDetails />} />
+              <Route path="/payment" element={<DummyPayment />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route
+                path="/payment-cancel"
+                element={<div>Payment Cancelled</div>}
+              />
+            </Routes>
+          </Layout>
         </div>
 
         {/* Global Auth Modal */}
-        <AuthModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
+        <AuthModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </BrowserRouter>
     </AuthProvider>
   );
