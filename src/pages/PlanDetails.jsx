@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import { db } from "../utils/firebase";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PlanDetailsSkeleton from "../components/ui/PlanDetailsSkeleton";
 
 const PlanDetails = () => {
   const { id } = useParams();
   const [plan, setPlan] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -19,6 +21,7 @@ const PlanDetails = () => {
       if (docSnap.exists()) {
         setPlan({ id: docSnap.id, ...docSnap.data() });
       }
+      setLoading(false);
     };
 
     fetchPlan();
@@ -28,7 +31,9 @@ const PlanDetails = () => {
     navigate("/payment", { state: { plan } });
   };
 
-  if (!plan) return <p className="text-white p-10">Loading...</p>;
+  if (loading) {
+    return <PlanDetailsSkeleton />;
+  }
 
   return (
     <section className="min-h-screen bg-black text-white flex flex-col md:flex-row">
