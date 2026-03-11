@@ -1,6 +1,6 @@
 import React from "react";
-import ServiceCard from "./ServiceCard";
-import ServicesHeading from "./ServicesHeading";
+import ServiceCard from "../ui/ServiceCard";
+import ServicesHeading from "../ui/ServicesHeading";
 
 const ServicesSection = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import HeroDashboard from "./HeroDashboard";
-import SubscriptionPlans from "./SubscriptionPlans";
+import HeroDashboard from "../components/features/dashboard/HeroDashboard";
+import SubscriptionPlans from "../components/features/plans/SubscriptionPlans";
 import { useRef } from "react";
 
 const Dashboard = () => {

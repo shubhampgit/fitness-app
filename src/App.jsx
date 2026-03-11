@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
-import AuthModal from "./components/AuthModal";
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
+import AuthModal from "./components/auth/AuthModal";
 import AuthProvider from "./context/AuthContext";
 import PlanDetails from "./pages/PlanDetails";
-import Layout from "./layout/Layout";
+import Layout from "./components/layout/Layout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import DummyPayment from "./pages/DummyPayment";
 
