@@ -2,6 +2,7 @@
     "appName": "Fitness Pro",
     "signInGoogle": "Sign in with Google",
     "signInText": "Sign in to continue your fitness journey",
+    "greeting": "Hi, {{name}} 👋",
     "termsText": "By continuing you agree to our Terms & Privacy Policy.",
     "footerText":
           "Empowering you to train harder, eat smarter, and live stronger. Join us on your journey toward a healthier lifestyle and sustainable fitness success.",

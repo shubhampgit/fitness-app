@@ -41,10 +41,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
       }
     };
@@ -68,9 +65,7 @@ const Header = () => {
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-40 backdrop-blur-md bg-white/70 dark:bg-black/70 border-b border-gray-200 dark:border-gray-800 transition-colors">
-
         <div className="flex justify-between items-center px-6 md:px-12 py-3">
-
           <h1
             className="text-lg sm:text-xl font-bold cursor-pointer text-gray-900 dark:text-white"
             onClick={() => navigate("/")}
@@ -79,7 +74,6 @@ const Header = () => {
           </h1>
 
           <div className="flex items-center gap-4 sm:gap-6">
-
             <select
               value={i18n.language}
               onChange={handleLanguageChange}
@@ -100,18 +94,20 @@ const Header = () => {
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
 
-            <div
-              ref={dropdownRef}
-              className="relative flex items-center gap-2"
-            >
+            <div ref={dropdownRef} className="relative flex items-center gap-2">
               <button
                 onClick={handleProfileClick}
                 className="flex items-center gap-2 text-gray-800 dark:text-white hover:text-red-500 transition"
                 aria-label="User menu"
               >
                 {user && (
-                  <span className="hidden sm:inline text-sm">
-                    {t("greeting", { name: user.name })}
+                  <span className="text-sm">
+                    {t("greeting", {
+                      name:
+                        user.name?.split(" ")[0] ||
+                        user.email?.split("@")[0] ||
+                        "User",
+                    })}
                   </span>
                 )}
 
@@ -120,26 +116,20 @@ const Header = () => {
 
               {user && isDropdownOpen && (
                 <div className="absolute right-0 top-full mt-3 w-40 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-2">
-
                   <button
                     onClick={handleLogout}
                     className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
                   >
                     {t("signOutButton")}
                   </button>
-
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </header>
 
-      <AuthModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <AuthModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

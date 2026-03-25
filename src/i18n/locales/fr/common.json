@@ -2,6 +2,7 @@
   "appName": "Fitness Pro",
   "signInGoogle": "Se connecter avec Google",
   "signInText": "Connectez-vous pour continuer votre parcours fitness",
+  "greeting": "Bonjour, {{name}} 👋",
   "termsText": "En continuant, vous acceptez nos Conditions et notre Politique de confidentialité.",
   "footerText": "Nous vous aidons à vous entraîner plus dur, à manger plus intelligemment et à vivre plus fort. Rejoignez-nous pour un mode de vie plus sain et un succès fitness durable.",
   "copyrightText": "Fitness Pro. Tous droits réservés. Conçu pour inspirer la force, la discipline et une vie saine.",
