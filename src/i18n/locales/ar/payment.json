@@ -1,0 +1,18 @@
+{
+  "title": "دفع آمن",
+  "plan": "الخطة",
+  "amount": "المبلغ",
+  "invalidPlan": "تم اختيار خطة غير صالحة",
+  "cardPlaceholder": "رقم البطاقة",
+  "expiryPlaceholder": "MM/YY",
+  "cvvPlaceholder": "CVV",
+  "payBtn": "ادفع {{amount}}",
+  "processing": "جارٍ معالجة الدفع...",
+  "demoText": "هذه صفحة دفع تجريبية. لن تتم أي معاملة حقيقية.",
+
+  "errors": {
+    "card": "أدخل رقم بطاقة صالح مكون من 16 رقمًا",
+    "expiry": "يجب أن يكون تاريخ الانتهاء بصيغة MM/YY",
+    "cvv": "أدخل CVV صالح"
+  }
+}

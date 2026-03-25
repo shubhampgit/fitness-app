@@ -1,0 +1,11 @@
+{
+  "title": "Your Membership",
+  "plan": "Plan",
+  "price": "Price",
+  "startDate": "Start Date",
+  "expiryDate": "Expiry Date",
+  "active": "Active",
+  "expired": "Expired",
+  "daysLeft": "{{count}} days left",
+  "renew": "Renew Membership"
+}

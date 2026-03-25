@@ -1,0 +1,18 @@
+{
+  "title": "Secure Payment",
+  "plan": "Plan",
+  "amount": "Amount",
+  "invalidPlan": "Invalid Plan Selected",
+  "cardPlaceholder": "Card Number",
+  "expiryPlaceholder": "MM/YY",
+  "cvvPlaceholder": "CVV",
+  "payBtn": "Pay {{amount}}",
+  "processing": "Processing Payment...",
+  "demoText": "This is a demo payment page. No real transaction will occur.",
+
+  "errors": {
+    "card": "Enter valid 16 digit card number",
+    "expiry": "Expiry must be MM/YY format",
+    "cvv": "Enter valid CVV"
+  }
+}

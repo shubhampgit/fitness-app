@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 const DummyPayment = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation("payment");
 
   const plan = state?.plan;
+
+  const lang = i18n.language;
+
+  const planName =
+    typeof plan?.name === "object"
+      ? plan.name?.[lang] || plan.name?.en
+      : plan?.name;
 
   const [formData, setFormData] = useState({
     cardNumber: "",
     expiry: "",
-    cvv: ""
+    cvv: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -21,7 +31,7 @@ const DummyPayment = () => {
 
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -29,15 +39,15 @@ const DummyPayment = () => {
     const newErrors = {};
 
     if (!formData.cardNumber || formData.cardNumber.length < 16) {
-      newErrors.cardNumber = "Enter valid 16 digit card number";
+      newErrors.cardNumber = t("errors.card");
     }
 
     if (!formData.expiry || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(formData.expiry)) {
-      newErrors.expiry = "Expiry must be MM/YY format";
+      newErrors.expiry = t("errors.expiry");
     }
 
     if (!formData.cvv || formData.cvv.length < 3) {
-      newErrors.cvv = "Enter valid CVV";
+      newErrors.cvv = t("errors.cvv");
     }
 
     setErrors(newErrors);
@@ -59,8 +69,8 @@ const DummyPayment = () => {
         state: {
           plan,
           startDate,
-          expiryDate
-        }
+          expiryDate,
+        },
       });
     }, 2000);
   };
@@ -68,32 +78,40 @@ const DummyPayment = () => {
   if (!plan) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-white text-black dark:bg-black dark:text-white">
-        Invalid Plan Selected
+        {t("invalidPlan")}
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black dark:bg-black dark:text-white">
-
+    <div
+      dir={lang === "ar" ? "rtl" : "ltr"}
+      className="flex items-center justify-center min-h-screen bg-gray-100 text-black dark:bg-black dark:text-white"
+    >
       <div className="bg-white dark:bg-gray-900 p-10 rounded-xl w-[420px] shadow-xl">
 
         <h2 className="text-2xl font-bold mb-6 text-center">
-          Secure Payment
+          {t("title")}
         </h2>
 
+        {/* Plan Info */}
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-6">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Plan</p>
-          <p className="text-lg font-semibold">{plan.name}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            {t("plan")}
+          </p>
+          <p className="text-lg font-semibold">{planName}</p>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">Amount</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+            {t("amount")}
+          </p>
           <p className="text-xl font-bold">₹{plan.price}</p>
         </div>
 
+        {/* Card */}
         <input
           type="text"
           name="cardNumber"
-          placeholder="Card Number"
+          placeholder={t("cardPlaceholder")}
           maxLength="16"
           className="w-full mb-1 px-3 py-2 rounded bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
           value={formData.cardNumber}
@@ -103,10 +121,11 @@ const DummyPayment = () => {
           <p className="text-red-500 text-sm mb-3">{errors.cardNumber}</p>
         )}
 
+        {/* Expiry */}
         <input
           type="text"
           name="expiry"
-          placeholder="MM/YY"
+          placeholder={t("expiryPlaceholder")}
           maxLength="5"
           className="w-full mb-1 px-3 py-2 rounded bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
           value={formData.expiry}
@@ -116,10 +135,11 @@ const DummyPayment = () => {
           <p className="text-red-500 text-sm mb-3">{errors.expiry}</p>
         )}
 
+        {/* CVV */}
         <input
           type="password"
           name="cvv"
-          placeholder="CVV"
+          placeholder={t("cvvPlaceholder")}
           maxLength="3"
           className="w-full mb-1 px-3 py-2 rounded bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
           value={formData.cvv}
@@ -129,6 +149,7 @@ const DummyPayment = () => {
           <p className="text-red-500 text-sm mb-4">{errors.cvv}</p>
         )}
 
+        {/* Button */}
         <button
           onClick={handlePayment}
           disabled={loading}
@@ -138,15 +159,16 @@ const DummyPayment = () => {
               : "bg-green-500 hover:bg-green-600 text-white"
           }`}
         >
-          {loading ? "Processing Payment..." : `Pay ₹${plan.price}`}
+          {loading
+            ? t("processing")
+            : t("payBtn", { amount: `₹${plan.price}` })}
         </button>
 
         <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
-          This is a demo payment page. No real transaction will occur.
+          {t("demoText")}
         </p>
 
       </div>
-
     </div>
   );
 };

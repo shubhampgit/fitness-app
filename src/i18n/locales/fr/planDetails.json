@@ -1,0 +1,9 @@
+{
+  "membershipLabel": "Abonnement",
+  "includedText": "Ce qui est inclus",
+  "benefitsLabel": "Avantages",
+  "buyBtn": "Acheter l'abonnement",
+  "errorMsg": "Impossible de charger les détails du plan",
+  "errorTitle": "Erreur",
+  "goHome": "Aller à l'accueil"
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Paiement sécurisé",
+  "plan": "Forfait",
+  "amount": "Montant",
+  "invalidPlan": "Forfait invalide sélectionné",
+  "cardPlaceholder": "Numéro de carte",
+  "expiryPlaceholder": "MM/AA",
+  "cvvPlaceholder": "CVV",
+  "payBtn": "Payer {{amount}}",
+  "processing": "Traitement du paiement...",
+  "demoText": "Ceci est une page de paiement de démonstration. Aucune transaction réelle ne sera effectuée.",
+
+  "errors": {
+    "card": "Entrez un numéro de carte valide à 16 chiffres",
+    "expiry": "L'expiration doit être au format MM/AA",
+    "cvv": "Entrez un CVV valide"
+  }
+}

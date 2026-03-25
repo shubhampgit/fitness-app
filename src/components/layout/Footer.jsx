@@ -21,7 +21,7 @@ const socialLinks = [
 ];
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <footer className="bg-gray-100 dark:bg-black text-gray-800 dark:text-gray-300 pt-16 pb-8 px-6 transition-colors duration-300">

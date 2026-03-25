@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const AuthModal = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   if (!isOpen) return null;
 

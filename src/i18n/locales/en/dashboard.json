@@ -1,0 +1,17 @@
+{
+  "dashboardHeading": "Buy Your Membership",
+  "dashboardText": "Unlimited access to workouts, sports sessions, expert coaching and personalized diet programs.",
+  "benefits": [
+    "Unlimited fitness programs",
+    "Guided expert sessions",
+    "Access to premium sports centers",
+    "Personal training support"
+  ],
+  "buyNowBtn": "Buy Now",
+  "planHeading": "Choose Your Plan",
+  "planText": "Flexible memberships built for your fitness journey.",
+  "perMonth": "/ {{count}} month",
+  "perMonth_plural": "/ {{count}} months",
+  "selectPlan": "Select Plan",
+  "mostPopular": "Most Popular"
+}

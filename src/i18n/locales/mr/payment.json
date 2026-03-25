@@ -1,0 +1,18 @@
+{
+  "title": "सुरक्षित पेमेंट",
+  "plan": "प्लान",
+  "amount": "रक्कम",
+  "invalidPlan": "अवैध प्लान निवडला आहे",
+  "cardPlaceholder": "कार्ड क्रमांक",
+  "expiryPlaceholder": "MM/YY",
+  "cvvPlaceholder": "CVV",
+  "payBtn": "{{amount}} भरा",
+  "processing": "पेमेंट प्रक्रिया सुरू आहे...",
+  "demoText": "ही एक डेमो पेमेंट पेज आहे. कोणताही वास्तविक व्यवहार होणार नाही.",
+
+  "errors": {
+    "card": "वैध 16 अंकी कार्ड क्रमांक टाका",
+    "expiry": "Expiry MM/YY फॉरमॅटमध्ये असणे आवश्यक आहे",
+    "cvv": "वैध CVV टाका"
+  }
+}

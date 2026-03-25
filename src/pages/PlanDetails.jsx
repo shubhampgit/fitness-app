@@ -3,10 +3,15 @@ import { doc, getDoc } from "firebase/firestore";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../utils/firebase";
 import PlanDetailsSkeleton from "../components/skeletons/PlanDetailsSkeleton";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 const PlanDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const { t } = useTranslation("planDetails");
+  const lang = i18n.language;
 
   const [plan, setPlan] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +35,7 @@ const PlanDetails = () => {
       } catch (err) {
         console.error("Error fetching plan:", err);
         if (isMounted) {
-          setError("Unable to load plan details.");
+          setError(t("error"));
         }
       } finally {
         if (isMounted) {
@@ -44,29 +49,45 @@ const PlanDetails = () => {
     return () => {
       isMounted = false;
     };
-  }, [id]);
+  }, [id, t]);
 
   const handleBuyMembership = () => {
     if (!plan) return;
-    navigate("/payment", { state: { plan } });
+    navigate("/payment", {
+      state: {
+        plan: {
+          ...plan,
+          plan_name: plan.name?.[lang] || plan.name?.en,
+        },
+      },
+    });
   };
 
-  if (loading) {
-    return <PlanDetailsSkeleton />;
-  }
+  const name = plan?.name?.[lang] || plan?.name?.en;
+  const description = plan?.description?.[lang] || plan?.description;
+  const features = plan?.features?.[lang] || plan?.features?.en || [];
+  const benefits = plan?.benefits?.[lang] || plan?.benefits?.en || [];
+
+  const formatCurrency = (value) =>
+    new Intl.NumberFormat(i18n.language, {
+      style: "currency",
+      currency: plan?.currency || "INR",
+    }).format(value);
+
+  if (loading) return <PlanDetailsSkeleton />;
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black dark:bg-black dark:text-white">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-black text-black dark:text-white">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Error</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("errorTitle")}</h2>
           <p className="text-gray-600 dark:text-gray-400">{error}</p>
 
           <button
             onClick={() => navigate("/")}
             className="mt-6 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg text-white"
           >
-            Go Home
+            {t("goHome")}
           </button>
         </div>
       </div>
@@ -74,67 +95,63 @@ const PlanDetails = () => {
   }
 
   return (
-    <section className="min-h-screen flex flex-col md:flex-row bg-gray-100 text-black dark:bg-black dark:text-white">
-
-      <div className="md:w-1/2 h-[350px] md:h-auto">
+    <section className="pt-20 md:pt-24 w-full flex flex-col md:flex-row bg-gray-100 text-black dark:bg-black dark:text-white">
+      {/* LEFT IMAGE */}
+      <div className="md:w-1/2 w-full h-[350px] md:h-[500px] lg:h-[600px] overflow-hidden">
         <img
           src={plan.banner_image}
-          alt={plan.name}
+          alt={name}
           className="w-full h-full object-cover"
         />
       </div>
 
-      <div className="md:w-1/2 p-10 md:p-12 flex flex-col justify-center">
-
-        <h1 className="text-4xl font-bold mb-4">
-          {plan.name} Membership
+      {/* RIGHT CONTENT */}
+      <div className="md:w-1/2 px-6 md:px-10 py-8 md:py-10 flex flex-col justify-start">
+        {/* Plan Name */}
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">
+          {name} {t("membershipLabel")}
         </h1>
 
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
-          {plan.description}
-        </p>
+        {/* Description */}
+        <p className="text-gray-600 dark:text-gray-400 mb-6">{description}</p>
 
-        <p className="text-3xl font-bold mb-6">
-          ₹{plan.price}
-        </p>
+        {/* Price */}
+        <p className="text-3xl font-bold mb-6">{formatCurrency(plan.price)}</p>
 
-        {Array.isArray(plan.features) && plan.features.length > 0 && (
+        {/* Features */}
+        {features.length > 0 && (
           <>
-            <h3 className="text-xl font-semibold mb-3">
-              What's Included
-            </h3>
+            <h3 className="text-xl font-semibold mb-3">{t("includedText")}</h3>
 
             <ul className="space-y-2 text-gray-600 dark:text-gray-400 mb-6">
-              {plan.features.map((feature, index) => (
+              {features.map((feature, index) => (
                 <li key={index}>✔ {feature}</li>
               ))}
             </ul>
           </>
         )}
 
-        {Array.isArray(plan.benefits) && plan.benefits.length > 0 && (
+        {/* Benefits */}
+        {benefits.length > 0 && (
           <>
-            <h3 className="text-xl font-semibold mb-3">
-              Benefits
-            </h3>
+            <h3 className="text-xl font-semibold mb-3">{t("benefitsLabel")}</h3>
 
             <ul className="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
-              {plan.benefits.map((benefit, index) => (
+              {benefits.map((benefit, index) => (
                 <li key={index}>⭐ {benefit}</li>
               ))}
             </ul>
           </>
         )}
 
+        {/* CTA */}
         <button
           onClick={handleBuyMembership}
-          className="bg-green-500 hover:bg-green-600 py-3 px-8 rounded-xl font-semibold text-white transition"
+          className="bg-green-500 hover:bg-green-600 py-3 px-8 rounded-xl font-semibold text-white transition w-fit"
         >
-          Buy Membership
+          {t("buyBtn")}
         </button>
-
       </div>
-
     </section>
   );
 };

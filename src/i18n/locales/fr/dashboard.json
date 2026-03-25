@@ -1,0 +1,16 @@
+{
+  "dashboardHeading": "Achetez votre abonnement",
+  "dashboardText": "Accès illimité aux entraînements, sessions sportives, coaching expert et programmes alimentaires personnalisés.",
+  "benefits": [
+    "Programmes de fitness illimités",
+    "Sessions guidées par des experts",
+    "Accès aux centres sportifs premium",
+    "Support d'entraînement personnalisé"
+  ],
+  "buyNowBtn": "Acheter maintenant",
+  "planHeading": "Choisissez votre forfait",
+  "planText": "Des abonnements flexibles adaptés à votre parcours fitness.",
+  "perMonth": "/ {{count}} mois",
+  "selectPlan": "Choisir le forfait",
+  "mostPopular": "Le plus populaire"
+}

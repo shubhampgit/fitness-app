@@ -1,0 +1,9 @@
+{
+  "membershipLabel": "Membership",
+  "includedText": "What's Included",
+  "benefitsLabel": "Benefits",
+  "buyBtn": "Buy Membership",
+  "errorMsg": "Unable to load plan details",
+  "errorTitle": "Error",
+  "goHome": "Go Home"
+}

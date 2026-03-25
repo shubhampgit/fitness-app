@@ -6,7 +6,7 @@ import { YOUTUBE_VIDEO_ID } from "../../utils/constants";
 
 const BannerSection = ({ openModal }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   const handleStartTraining = useCallback(() => {
     if (auth?.currentUser) {
@@ -47,14 +47,14 @@ const BannerSection = ({ openModal }) => {
         <div className="max-w-2xl">
 
           <h1 className="text-white text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            {t("welcome")}
+            {t("bannerHeading")}
           </h1>
 
           <button
             onClick={handleStartTraining}
             className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            {t("startTraining")}
+            {t("bannerBtnText")}
           </button>
 
         </div>

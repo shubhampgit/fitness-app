@@ -1,0 +1,13 @@
+{
+  "activatingTitle": "Activating your membership...",
+  "activatingDesc": "Please wait while we confirm your subscription.",
+
+  "errorTitle": "Payment Error",
+  "errorMsg": "Something went wrong while activating membership.",
+  "goHome": "Go Home",
+
+  "successTitle": "Payment Successful 🎉",
+  "successMsg": "Your {{plan}} membership has been activated.",
+  "successSubText": "Enjoy unlimited workouts and fitness sessions.",
+  "goDashboard": "Go to Dashboard"
+}

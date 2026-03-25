@@ -1,0 +1,13 @@
+{
+  "activatingTitle": "Activation de votre abonnement...",
+  "activatingDesc": "Veuillez patienter pendant que nous confirmons votre abonnement.",
+
+  "errorTitle": "Erreur de paiement",
+  "errorMsg": "Une erreur est survenue lors de l'activation.",
+  "goHome": "Aller à l'accueil",
+
+  "successTitle": "Paiement réussi 🎉",
+  "successMsg": "Votre abonnement {{plan}} a été activé.",
+  "successSubText": "Profitez d'un accès illimité aux entraînements.",
+  "goDashboard": "Aller au tableau de bord"
+}

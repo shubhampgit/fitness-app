@@ -1,0 +1,18 @@
+{
+  "title": "सुरक्षित भुगतान",
+  "plan": "प्लान",
+  "amount": "राशि",
+  "invalidPlan": "अमान्य प्लान चयनित",
+  "cardPlaceholder": "कार्ड नंबर",
+  "expiryPlaceholder": "MM/YY",
+  "cvvPlaceholder": "CVV",
+  "payBtn": "{{amount}} भुगतान करें",
+  "processing": "भुगतान प्रोसेस हो रहा है...",
+  "demoText": "यह एक डेमो भुगतान पेज है। कोई वास्तविक लेनदेन नहीं होगा।",
+
+  "errors": {
+    "card": "मान्य 16 अंकों का कार्ड नंबर दर्ज करें",
+    "expiry": "Expiry MM/YY फॉर्मेट में होना चाहिए",
+    "cvv": "मान्य CVV दर्ज करें"
+  }
+}

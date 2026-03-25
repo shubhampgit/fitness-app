@@ -1,0 +1,11 @@
+{
+  "title": "Votre abonnement",
+  "plan": "Forfait",
+  "price": "Prix",
+  "startDate": "Date de début",
+  "expiryDate": "Date d'expiration",
+  "active": "Actif",
+  "expired": "Expiré",
+  "daysLeft": "{{count}} jours restants",
+  "renew": "Renouveler l'abonnement"
+}

@@ -7,9 +7,10 @@ import AuthModal from "../auth/AuthModal";
 import { AuthContext } from "../../context/AuthContext";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useTranslation } from "react-i18next";
+import i18n from "../../i18n";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation("common");
   const { darkMode, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(AuthContext);
 

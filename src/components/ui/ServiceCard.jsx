@@ -30,7 +30,7 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   return (
     <section className="py-16 px-6 bg-gray-100 dark:bg-black transition-colors duration-300">
